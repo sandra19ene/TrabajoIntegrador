@@ -1,14 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.utn.trabajointegrador;
 
-/**
- *
- * @author Windows 10
- */
+import java.util.List;
+import lombok.Data;
+
+@Data
 public class Tecnico {
+     private String nombre;
+    private List<String> especialidades;
+
+    public Tecnico() {
+    }
+
+    public Tecnico(String nombre, List<String> especialidades) {
+        this.nombre = nombre;
+        this.especialidades = especialidades;
+    }
     
 }
