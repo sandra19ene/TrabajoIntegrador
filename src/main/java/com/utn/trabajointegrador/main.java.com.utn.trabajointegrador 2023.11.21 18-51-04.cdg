@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.com.utn.trabajointegrador">
+  <ClassDiagramComponents>
+    <Class name="Cliente" package="com.utn.trabajointegrador" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="razonSocial" type="String" visibility="private"/>
+        <Field name="cuit" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="razonSocial"/>
+          <Argument type="String" name="cuit"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="GestorComercial" package="com.utn.trabajointegrador" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="darAltaCliente" returnType="void" visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+        </Method>
+        <Method name="darBajaCliente" returnType="void" visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+        </Method>
+        <Method name="modificarDatosCliente" returnType="void" visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Incidente" package="com.utn.trabajointegrador" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="cliente" type="Cliente" visibility="private"/>
+        <Field name="servicio" type="String" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="tipoProblema" type="String" visibility="private"/>
+        <Field name="tecnicoAsignado" type="Tecnico" visibility="private"/>
+        <Field name="fechaIngreso" type="Date" visibility="private"/>
+        <Field name="fechaPosibleResolucion" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+          <Argument type="String" name="servicio"/>
+          <Argument type="String" name="descripcion"/>
+          <Argument type="String" name="tipoProblema"/>
+          <Argument type="Tecnico" name="tecnicoAsignado"/>
+          <Argument type="Date" name="fechaIngreso"/>
+          <Argument type="Date" name="fechaPosibleResolucion"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="MesaDeAyuda" package="com.utn.trabajointegrador" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="clientes" type="List&lt;Cliente&gt;" visibility="private"/>
+        <Field name="tecnicos" type="List&lt;Tecnico&gt;" visibility="private"/>
+        <Field name="incidentes" type="List&lt;Incidente&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="RecursosHumanos" package="com.utn.trabajointegrador" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="darAltaTecnico" returnType="void" visibility="public">
+          <Argument type="Tecnico" name="tecnico"/>
+        </Method>
+        <Method name="darBajaTecnico" returnType="void" visibility="public">
+          <Argument type="Tecnico" name="tecnico"/>
+        </Method>
+        <Method name="modificarDatosTecnico" returnType="void" visibility="public">
+          <Argument type="Tecnico" name="tecnico"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Tecnico" package="com.utn.trabajointegrador" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="especialidades" type="List&lt;String&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="List&lt;String&gt;" name="especialidades"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="trabajoIntegrador" package="com.utn.trabajointegrador" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="cliente" source="com.utn.trabajointegrador.Incidente" target="com.utn.trabajointegrador.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="incidentes" source="com.utn.trabajointegrador.MesaDeAyuda" target="com.utn.trabajointegrador.Incidente" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Incidente&gt;"/>
+    <HasRelation name="tecnicoAsignado" source="com.utn.trabajointegrador.Incidente" target="com.utn.trabajointegrador.Tecnico" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.utn.trabajointegrador.RecursosHumanos" target="com.utn.trabajointegrador.Tecnico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tecnicos" source="com.utn.trabajointegrador.MesaDeAyuda" target="com.utn.trabajointegrador.Tecnico" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Tecnico&gt;"/>
+    <HasRelation name="clientes" source="com.utn.trabajointegrador.MesaDeAyuda" target="com.utn.trabajointegrador.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Cliente&gt;"/>
+    <UseRelation source="com.utn.trabajointegrador.GestorComercial" target="com.utn.trabajointegrador.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
